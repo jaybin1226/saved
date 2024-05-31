@@ -1,7 +1,9 @@
 const gameContainer = document.getElementById('gameContainer');
 const player = document.getElementById('player');
+const timerElement = document.getElementById('timer');
 const gameOverScreen = document.getElementById('gameOver');
 const retryButton = document.getElementById('retryButton');
+const finalTimeElement = document.getElementById('finalTime');
 let playerX = window.innerWidth / 2;
 let playerY = window.innerHeight / 2;
 const playerSpeed = 20;  // Increased player speed (2x)
@@ -10,6 +12,8 @@ let lasers = [];
 let gameOver = false;
 let laserCreationInterval = 1000;  // Initial laser creation interval
 let laserCreationTimer;
+let gameTimer;
+let elapsedTime = 0;
 
 function movePlayer(event) {
     if (gameOver) return;
@@ -121,6 +125,8 @@ function endGame() {
     gameOver = true;
     gameOverScreen.style.display = 'block';
     clearInterval(laserCreationTimer);  // Stop laser creation
+    clearInterval(gameTimer);  // Stop game timer
+    finalTimeElement.textContent = `You survived for ${elapsedTime} seconds.`;
 }
 
 function restartGame() {
@@ -133,7 +139,10 @@ function restartGame() {
     player.style.left = playerX + 'px';
     player.style.top = playerY + 'px';
     laserCreationInterval = 1000;  // Reset laser creation interval
+    elapsedTime = 0;
+    timerElement.textContent = `Time: 0s`;
     startLaserCreation();
+    startGameTimer();
 }
 
 function startLaserCreation() {
@@ -148,7 +157,15 @@ function startLaserCreation() {
     }, laserCreationInterval);
 }
 
+function startGameTimer() {
+    gameTimer = setInterval(() => {
+        elapsedTime++;
+        timerElement.textContent = `Time: ${elapsedTime}s`;
+    }, 1000);
+}
+
 document.addEventListener('keydown', movePlayer);
 retryButton.addEventListener('click', restartGame);
 startLaserCreation();
+startGameTimer();
 setInterval(moveLasers, 20);
