@@ -1,0 +1,241 @@
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+      }
+
+/* 공통 스타일 */
+body, html { 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #1c1c1c; /* 배경색 설정 */
+    font-family: 'Noto Sans CJK KR', sans-serif;
+
+}
+
+/* 로고 이미지 */
+.logo {
+    width: 200px; /* 로고 이미지 너비 설정 */
+}
+
+/* 섹션 1 스타일 */
+#section1 {
+    scroll-snap-align: start; /* 섹션 1이 스크롤 시 맨 위에 정렬되도록 설정 */
+    height: 100vh; /* 화면 전체 높이만큼 섹션 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬 */
+}
+
+#section1 .container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+#section1 .club-name, #section1 .site-name {
+    margin: 0 auto; /* 기본적인 margin을 제거하여 두 텍스트 사이의 간격을 줄입니다 */
+    font-family: 'BMHANNAPro';
+}
+
+#section1 .site-name {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#section1.scroll-up .scroll-info {
+    opacity: 0; /* 스크롤 텍스트가 사라지도록 설정 */
+}
+
+/* 섹션 2 스타일 */
+#section2 {
+    height: 125vh; /* 화면 전체 높이만큼 섹션 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬 */
+}
+
+#section2 .container {
+    max-width: 800px; /* 컨테이너 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    color: #ffffff;
+}
+
+#section2 h1 {
+    font-size: 40px; /* 제목 폰트 크기 설정 */
+    background-image: linear-gradient(to right, #00c4e0, #0287d6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#section2 h2 {
+    font-size: 36px; /* 부제목 폰트 크기 설정 */
+    color: #ffffff
+}
+
+#section2 .introduce {
+    font-size: 18px; /* 내용 폰트 크기 설정 */
+    font-weight: bold;
+    color: white;
+}
+
+/* 섹션 3 스타일 */
+#section3 {
+    height: 175vh; /* 화면 전체 높이만큼 섹션 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬 */
+}
+
+#section3 .container {
+    max-width: 800px; /* 컨테이너 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    color: #ffffff;
+}
+
+#section3 h1 {
+    font-size: 40px; /* 제목 폰트 크기 설정 */
+    background-image: linear-gradient(to right, #00c4e0, #0287d6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#section3 h2 {
+    font-size: 36px; /* 부제목 폰트 크기 설정 */
+    color: #ffffff
+}
+
+#section3 img {
+    max-width: 400px; /* 이미지의 최대 너비 설정 */
+    height: auto; /* 이미지 높이 자동 조정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    animation: bounce 2s infinite; /* bounce 애니메이션 적용 */
+}
+
+#section3 .season1 {
+    font-size: 25px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, rgb(237, 124, 48), rgb(211, 88, 52));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  #section3 .season2 {
+    font-size: 25px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, rgb(158, 177, 145), rgb(194, 199, 150));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+/* 섹션 4 스타일 */
+#section4 {
+    height: 160vh; /* 화면 전체 높이만큼 섹션 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬 */
+}
+
+#section4 .container {
+    max-width: 800px; /* 컨테이너 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    color: #ffffff;
+}
+
+#section4 h1 {
+    font-size: 40px; /* 제목 폰트 크기 설정 */
+    background-image: linear-gradient(to right, #00c4e0, #0287d6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#section4 h2 {
+    font-size: 36px; /* 부제목 폰트 크기 설정 */
+    color: #ffffff
+}
+
+/* 섹션 5 스타일 */
+#section5 {
+    height: 75vh; /* 화면 전체 높이만큼 섹션 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬 */
+}
+
+#section5 .container {
+    max-width: 800px; /* 컨테이너 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    color: #ffffff;
+}
+
+#section5 h1 {
+    font-size: 30px; /* 제목 폰트 크기 설정 */
+    background-image: linear-gradient(to right, #00c4e0, #0287d6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#section5 h2 {
+    font-size: 20px; /* 부제목 폰트 크기 설정 */
+    color: #ffffff
+}
+
+#section5 h6 {
+    font-size: 25px; /* 내용 폰트 크기 설정 */
+}
+
+#section5 img {
+    max-width: 100%; /* 이미지의 최대 너비 설정 */
+    height: auto; /* 이미지 높이 자동 조정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    object-fit: scale-down;
+}
+
+#section5 .apply-button {
+    background-color: #0070c9; /* 버튼 배경색 설정 */
+    color: #ffffff; /* 텍스트 색상 */
+    padding: 30px 70px; /* 내부 여백 설정 */
+    border: none; /* 테두리 제거 */
+    border-radius: 20px; /* 라운드 처리 */
+    cursor: pointer; /* 커서를 포인터로 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 전환 설정 */
+    font-size: 36px; /* 텍스트 크기 설정 */
+    font-weight: bold;
+}
+
+#section5 .apply-button:hover {
+    background-color: #005aa7; /* 호버 시 배경색 변경 */
+}
+
+/* 채팅 메시지 스타일 */
+.chat-container {
+    display: flex; /* Flexbox 레이아웃 사용 */
+    flex-direction: column; /* 세로 방향으로 요소 정렬 */
+    align-items: center; /* 가운데 정렬 */
+}
+
+.message {
+    padding: 10px; /* 내부 여백 설정 */
+    margin-bottom: 10px; /* 메시지 간의 간격 설정 */
+    border-radius: 10px; /* 모서리를 둥글게 설정 */
+    opacity: 0; /* 초기에는 숨김 상태로 설정합니다. */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 애니메이션 속성을 추가합니다. */
+}
+
+.answer-message {
+    background-color: #e5e5e5; /* 사용자 메시지 배경색 */
+    color: #000000;
+}
+
+.user-message {
+    background-color: #0077ff; /* ChatGPT 메시지 배경색 */
+    color: white; /* 텍스트 색상 설정 */
+}
