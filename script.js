@@ -1,68 +1,70 @@
-window.onload = function () {
-    // ✅ 로고 애니메이션 실행
-    const logo = document.querySelector('.logo');
-    if (logo) {
-        let hue = 0;
-        function rotateGradient() {
-            hue += 1;
-            logo.style.filter = `hue-rotate(${hue}deg)`;
-            requestAnimationFrame(rotateGradient);
-        }
-        rotateGradient();
-    }
+// 모바일 여부를 확인하는 함수
+function isMobileDevice() {
+  return window.matchMedia("only screen and (max-width: 768px)").matches;
+}
 
-    // ✅ 스크롤 이벤트 감지
-    window.addEventListener('scroll', handleScroll);
+// 페이지 로드 시 한 번만 실행되는 코드
+window.onload = function() {
+  // 모바일이면서 아직 리디렉션이 수행되지 않았을 경우에만 리디렉션을 수행
+  if (isMobileDevice() && !sessionStorage.getItem('redirected')) {
+      sessionStorage.setItem('redirected', 'true'); // 리디렉션이 수행되었음을 표시
+      window.location.href = "m.html"; // 모바일 페이지로 리디렉션
+  }
 };
 
-// ✅ 스크롤 감지 변수
-let lastScrollTop = 0;
-let scrollTimeout;
 
-// ✅ 메시지 박스 생성
-const messageBox = document.createElement("div");
-messageBox.textContent = "스크롤을 위로 하셨거나 3초 이상 멈췄습니다!";
-messageBox.style.cssText = `
-    position: fixed;
-    bottom: -50px; /* 초기에는 숨김 */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: bottom 0.5s ease-in-out;
-    z-index: 1000;
-`;
-document.body.appendChild(messageBox);
-
-// ✅ 메시지 표시 함수
-function showMessage() {
-    messageBox.style.bottom = "20px"; // 화면 하단에 표시
-    setTimeout(() => {
-        messageBox.style.bottom = "-50px"; // 3초 후 숨김
-    }, 3000);
-}
-
-// ✅ 스크롤 이벤트 함수
-function handleScroll() {
-    const scrollTop = window.scrollY || window.pageYOffset;
-
-    // ✅ 위로 스크롤하면 메시지 표시
-    if (scrollTop < lastScrollTop) {
-        showMessage();
+window.onload = function() {
+    const logo = document.querySelector('.logo');
+    let hue = 0;
+  
+    function rotateGradient() {
+      hue += 1; // 색상 각도 증가
+      logo.style.filter = `hue-rotate(${hue}deg)`; // 로고에 그라디언트 적용
+      requestAnimationFrame(rotateGradient);
     }
+  
+    rotateGradient();
+  };
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  let lastScrollTop = 0;
 
-    // ✅ 기존 타이머 초기화 (새로운 스크롤 이벤트 발생 시)
-    clearTimeout(scrollTimeout);
+  window.addEventListener('scroll', function() {
+      const scrollInfo = document.querySelector('.scroll-info');
+      const scrollTop = window.scrollY || window.pageYOffset;
+  
+      if (scrollTop > lastScrollTop) {
+          document.getElementById('section1').classList.add('scroll-up');
+      } else {
+          document.getElementById('section1').classList.remove('scroll-up');
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  });
 
-    // ✅ 3초 동안 스크롤이 없으면 메시지 표시
-    scrollTimeout = setTimeout(() => {
-        showMessage();
-    }, 3000);
+
+// script.js
+
+// DOM 요소들을 가져옵니다.
+const chatBubbles = document.querySelectorAll('.message');
+
+// 스크롤 이벤트 리스너를 추가합니다.
+window.addEventListener('scroll', toggleChatBubblesVisibility);
+
+// 채팅 버블들의 가시성을 토글하는 함수를 정의합니다.
+function toggleChatBubblesVisibility() {
+  // 화면의 아래쪽에서 숨겨야 할 기준 위치를 설정합니다.
+  const hideThreshold = window.innerHeight * 0.9;
+
+  // 각 채팅 버블들에 대해 처리합니다.
+  chatBubbles.forEach(bubble => {
+    // 채팅 버블의 위치를 가져옵니다.
+    const bubbleRect = bubble.getBoundingClientRect();
+    
+    // 채팅 버블이 화면 아래쪽에 위치하면 투명도를 0으로 설정하여 숨깁니다.
+    if (bubbleRect.top > hideThreshold || bubbleRect.bottom < 0) {
+      bubble.style.opacity = '0';
+    } else {
+      bubble.style.opacity = '1';
+    }
+  });
 }
 
-// ✅ 스크롤 이벤트 리스너 등록
-window.addEventListener("scroll", handleScroll);
