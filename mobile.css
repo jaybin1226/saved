@@ -43,7 +43,7 @@ body, html {
     color: #ffffff;
 }
 
-#section1 .club-name, #section1 .site-name {
+#section1 .club-name, #section1 .site-name, #section1 .scrolling {
     margin: 0 auto; /* 기본적인 margin을 제거하여 두 텍스트 사이의 간격을 줄입니다 */
     font-family: 'BMHANNAPro';
 }
@@ -54,7 +54,7 @@ body, html {
 }
 
 #section1 .scrolling {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: bold;
 }
 
