@@ -53,6 +53,11 @@ body, html {
     font-weight: bold;
 }
 
+#section1 .scrolling {
+    font-size: 48px;
+    font-weight: bold;
+}
+
 #section1.scroll-up .scroll-info {
     opacity: 0; /* 스크롤 텍스트가 사라지도록 설정 */
 }
