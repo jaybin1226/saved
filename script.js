@@ -1,11 +1,11 @@
-window.onload = function() {
+window.onload = function () {
     // 로고 애니메이션 실행
     const logo = document.querySelector('.logo');
     if (logo) {
         let hue = 0;
         function rotateGradient() {
             hue += 1;
-            logo.style.filter = `hue-rotate(${hue}deg)`; // 올바른 백틱(`) 적용
+            logo.style.filter = `hue-rotate(${hue}deg)`;
             requestAnimationFrame(rotateGradient);
         }
         rotateGradient();
@@ -13,6 +13,9 @@ window.onload = function() {
 
     // 스크롤 이벤트 리스너 추가
     window.addEventListener('scroll', handleScroll);
+
+    // 페이지 로드 시 한 번 실행 (초기 스타일 적용)
+    handleScroll();
 };
 
 // 스크롤 방향 감지 변수
@@ -36,9 +39,11 @@ function handleScroll() {
     }
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // 모바일에서 음수 스크롤 방지
 
-    // 채팅 버블 가시성 조절
-    chatBubbles.forEach(bubble => {
-        const bubbleRect = bubble.getBoundingClientRect();
-        bubble.style.opacity = (bubbleRect.top > hideThreshold || bubbleRect.bottom < 0) ? '0' : '1';
-    });
+    // 채팅 버블 가시성 조절 (요소가 있을 때만 실행)
+    if (chatBubbles.length > 0) {
+        chatBubbles.forEach(bubble => {
+            const bubbleRect = bubble.getBoundingClientRect();
+            bubble.style.opacity = (bubbleRect.top > hideThreshold || bubbleRect.bottom < 0) ? '0' : '1';
+        });
+    }
 }
